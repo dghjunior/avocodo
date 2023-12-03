@@ -6,12 +6,12 @@ from scipy.io.wavfile import write
 
 from pytorch_lightning import Trainer
 
-from avocodo.meldataset import mel_spectrogram
-from avocodo.meldataset import MAX_WAV_VALUE
-from avocodo.meldataset import load_wav
-from avocodo.meldataset import normalize
-from avocodo.lightning_module import Avocodo
-from avocodo.data_module import AvocodoData
+from meldataset import mel_spectrogram
+from meldataset import MAX_WAV_VALUE
+from meldataset import load_wav
+from meldataset import normalize
+from lightning_module import Avocodo
+from data_module import AvocodoData
 
 
 h = None

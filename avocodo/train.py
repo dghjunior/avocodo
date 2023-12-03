@@ -1,4 +1,8 @@
 import os
+
+# Set the environment variable
+os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
+
 import argparse
 
 from omegaconf import OmegaConf
@@ -8,8 +12,8 @@ from pytorch_lightning.callbacks.progress.rich_progress import RichProgressBarTh
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.utilities import rank_zero_only
 
-from avocodo.data_module import AvocodoData
-from avocodo.lightning_module import Avocodo
+from data_module import AvocodoData
+from lightning_module import Avocodo
 
 
 class TBLogger(TensorBoardLogger):
@@ -19,6 +23,7 @@ class TBLogger(TensorBoardLogger):
         return super().log_metrics(metrics, step)
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--group_name', default=None)
@@ -51,7 +56,7 @@ if __name__ == "__main__":
     max_epochs = conf.model.train.training_epochs
 
     trainer = Trainer(
-        gpus=1,
+        accelerator='gpu',
         max_epochs=max_epochs,
         callbacks=[
             RichProgressBar(

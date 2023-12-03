@@ -3,8 +3,8 @@ from pytorch_lightning import LightningDataModule
 from pytorch_lightning.utilities import rank_zero_only
 from torch.utils.data import DataLoader
 
-from avocodo.meldataset import MelDataset
-from avocodo.meldataset import get_dataset_filelist
+from meldataset import MelDataset
+from meldataset import get_dataset_filelist
 
 
 @dataclass
@@ -95,4 +95,5 @@ class AvocodoData(LightningDataModule):
                           sampler=None,
                           batch_size=1,
                           pin_memory=True,
+                          persistent_workers=True,
                           drop_last=True)

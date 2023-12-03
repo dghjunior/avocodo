@@ -8,8 +8,8 @@ from torch.nn.utils import weight_norm
 from torch.nn.utils import spectral_norm
 from typing import List
 
-from avocodo.pqmf import PQMF
-from avocodo.models.utils import get_padding
+from pqmf import PQMF
+from models.utils import get_padding
 
 
 class MDC(torch.nn.Module):
