@@ -69,7 +69,8 @@ class AvocodoData(LightningDataModule):
             shuffle=False,
             batch_size=self.hparams.batch_size,
             pin_memory=True,
-            drop_last=True
+            drop_last=True,
+            persistent_workers=True
         )
 
     @rank_zero_only
